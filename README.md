@@ -8,71 +8,63 @@ explicit parallels to how it'd work in a production system.
 - **Styling** - plain CSS
 - **Layout** - Bun workspaces monorepo (`client/` + `server/`)
 
-## How to use this project
-
-It's built to be read and run, not just cloned. Each route is a self-contained
-lesson, ordered roughly from naive to modern, each with a `LESSON.md` and grep-able
-`// PROD:` / `// CONCEPT:` / `// GOTCHA:` comments.
-
-- Read **[LEARNING.md](./LEARNING.md)** for the lesson index and conventions.
-- Run `bun run dev`, then click through the nav from left to right.
-- For each route, open its `LESSON.md` (e.g. `client/src/routes/query/LESSON.md`)
-  and follow the **Try this** section while reading the commented code.
-- `grep -rn "// PROD:" client/src` to read every production parallel in one pass.
-
-Lessons, in order: `/` (useEffect baseline), `/items` (loader + discriminated
-union), `/query` (TanStack Query), `/new-item` (React 19 form hooks),
-`/dashboard` (Context + Zustand), `/mutate` (useMutation + cache invalidation),
-`/patterns` (composition + useReducer), `/auth` (session management).
-
-Run the tests with `bun run test` (Vitest + React Testing Library).
-
-## Setup
+## Quick start
 
 ```bash
 bun install
+bun run dev      # client on :5173, API on :3001
 ```
 
-## Run (dev)
-
-Starts the Vite dev server and the Express API together:
+Open http://localhost:5173 and click through the nav from left to right - the
+routes are ordered from naive to modern. Vite proxies `/api/*` to the API
+server, so there's no CORS setup.
 
 ```bash
-bun run dev
+bun run test     # Vitest + React Testing Library
+bun run build    # build the client into client/dist
+bun run start    # run the API server
 ```
 
-- Client: http://localhost:5173
-- API: http://localhost:3001
+## The lessons
 
-Vite proxies `/api/*` to the API server, so the frontend calls `/api/items`
-with no CORS setup.
+Each route is a self-contained lesson with its own `LESSON.md` next to the code
+(what it teaches, the production parallel, what to try, when NOT to use it).
 
-Run them individually if you prefer:
+| Route        | Teaches                                            |
+| ------------ | -------------------------------------------------- |
+| `/`          | `useEffect` fetch - the naive baseline             |
+| `/items`     | route loader + a discriminated union (no casts)    |
+| `/query`     | TanStack Query (server state)                      |
+| `/new-item`  | React 19 form hooks (`POST /api/items`)            |
+| `/dashboard` | client state: Context + Zustand                    |
+| `/mutate`    | `useMutation` + cache invalidation                 |
+| `/patterns`  | composition + `useReducer` (+ React Compiler note) |
+| `/auth`      | session management (JWT access/refresh + cookies)  |
+
+Tests live with the code they cover, e.g.
+`client/src/routes/patterns/Patterns.test.tsx`.
+
+## How to read a lesson
+
+Run the app, then for each route open its `LESSON.md` and follow the **Try this**
+section while reading the commented code. The comments use a fixed vocabulary:
+
+- `// CONCEPT:` - the React idea this block teaches
+- `// PROD:` - the parallel to a real production system
+- `// GOTCHA:` - the trap people hit
+
+Grep one theme at a time:
 
 ```bash
-bun run dev:client
-bun run dev:server
+grep -rn "// PROD:" client/src      # every production parallel in one pass
+grep -rn "// GOTCHA:" client/src    # every trap
 ```
 
-## Routes
+## 2026 notes
 
-**Frontend**
-
-| Path     | Page  |
-| -------- | ----- |
-| `/`      | Home (fetches `/api/items`) |
-| `/about` | About |
-
-**API**
-
-| Method | Path          | Returns                       |
-| ------ | ------------- | ----------------------------- |
-| GET    | `/api/health` | `{ status, uptime }`          |
-| GET    | `/api/items`  | array of `{ id, name }`       |
-
-## Build (production)
-
-```bash
-bun run build   # builds client into client/dist
-bun run start   # runs the API server
-```
+- **React Compiler is stable** (v1.0): memoization is automatic. There is no
+  `useMemo`/`useCallback` here on purpose - writing it by hand is now redundant.
+  See `client/src/routes/patterns/LESSON.md` for the before/after.
+- **`useEffect` for derived/synced state is an anti-pattern** - compute in the
+  render body instead. The `/` route keeps a raw `useEffect` *fetch* only as a
+  baseline to compare against `/query`, not as a recommendation.
