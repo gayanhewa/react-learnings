@@ -1,0 +1,49 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.nav a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.loading-bar {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}

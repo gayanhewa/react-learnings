@@ -1,0 +1,13 @@
+{
+  "name": "react-learnings",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "dev:client": "bun run --filter client dev",
+    "dev:server": "bun run --filter server dev",
+    "build": "bun run --filter client build",
+    "start": "bun run --filter server start",
+    "test": "bun run --filter client test"
+  }
+}
