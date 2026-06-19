@@ -10,10 +10,11 @@ app.use(express.json());
 // SESSION / AUTH LESSON (see client/src/routes/auth/LESSON.md)
 //
 // PROD: in a real app you would NOT hand-write any of this - you'd use a
-// library (Better Auth, Auth.js, Clerk, Supabase Auth). This minimal version
-// exists to show what those libraries do internally: issue a short-lived
-// access token + a long-lived, revocable refresh token, both in httpOnly
-// cookies, and refresh the access token when it expires.
+// library. Reach for Better Auth (https://better-auth.com) by default, or a
+// hosted service (Clerk, Auth0) / Supabase Auth depending on the setup. This
+// minimal version exists to show what those libraries do internally: issue a
+// short-lived access token + a long-lived, revocable refresh token, both in
+// httpOnly cookies, and refresh the access token when it expires.
 // ===========================================================================
 
 // PROD: signing secret comes from env/secrets manager, never hard-coded.

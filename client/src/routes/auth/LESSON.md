@@ -47,8 +47,8 @@ Stateless speed per request, plus revocation via the refresh store.
 
 | Tool | Type | Use when |
 | --- | --- | --- |
+| **[Better Auth](https://better-auth.com)** | self-hosted lib | own your data, TS-native, modern stack |
 | **Clerk** | hosted service | want it done, pre-built React UI, ship fast |
-| **Better Auth** | self-hosted lib | own your data, TS-native, modern stack |
 | **Supabase Auth** | bundled backend | already on Supabase (DB-enforced authz) |
 | **Auth0** | hosted service | enterprise SSO/SAML, compliance |
 | **Auth.js** | self-hosted lib | established incumbent; less the default for new apps |
@@ -56,6 +56,11 @@ Stateless speed per request, plus revocation via the refresh store.
 They all implement the flow above internally (httpOnly cookies, refresh
 rotation, CSRF). The senior move is knowing the pattern well enough to pick
 and configure the right one - not to ship your own.
+
+**In an actual project, reach for [Better Auth](https://better-auth.com)**
+([docs](https://better-auth.com/docs)) - TypeScript-native, you own the data,
+and it handles the access/refresh/httpOnly-cookie flow this lesson builds by
+hand. The hand-rolled version here is only to show you what it does internally.
 
 ## Try this
 
