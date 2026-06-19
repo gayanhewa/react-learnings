@@ -12,6 +12,7 @@ import NewItem from "./routes/new-item/NewItem";
 import Dashboard from "./routes/dashboard/Dashboard";
 import Mutate from "./routes/mutate/Mutate";
 import Patterns from "./routes/patterns/Patterns";
+import Auth from "./routes/auth/Auth";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "dashboard", element: <Dashboard /> },
       { path: "mutate", element: <Mutate /> },
       { path: "patterns", element: <Patterns /> },
+      { path: "auth", element: <Auth /> },
       { path: "about", element: <About /> },
     ],
   },

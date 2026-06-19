@@ -23,7 +23,7 @@ lesson, ordered roughly from naive to modern, each with a `LESSON.md` and grep-a
 Lessons, in order: `/` (useEffect baseline), `/items` (loader + discriminated
 union), `/query` (TanStack Query), `/new-item` (React 19 form hooks),
 `/dashboard` (Context + Zustand), `/mutate` (useMutation + cache invalidation),
-`/patterns` (composition + useReducer).
+`/patterns` (composition + useReducer), `/auth` (session management).
 
 Run the tests with `bun run test` (Vitest + React Testing Library).
 

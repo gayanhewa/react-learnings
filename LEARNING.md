@@ -33,6 +33,7 @@ production parallel, what to try, and when NOT to use it in real life.
 | `/dashboard` | client state: Context + Zustand          | done   |
 | `/mutate`    | useMutation + cache invalidation         | done   |
 | `/patterns`  | composition + useReducer                 | done   |
+| `/auth`      | session management (JWT + httpOnly cookie) | done |
 
 Testing: `/patterns` has a Vitest + React Testing Library suite
 (`client/src/routes/patterns/Patterns.test.tsx`). Run `bun run test`.

@@ -19,6 +19,7 @@ export default function App() {
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/mutate">Mutate</Link>
         <Link to="/patterns">Patterns</Link>
+        <Link to="/auth">Auth</Link>
         <Link to="/about">About</Link>
       </nav>
       {/* Top-level pending bar - appears during any loader-driven navigation
