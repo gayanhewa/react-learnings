@@ -60,6 +60,13 @@ grep -rn "// PROD:" client/src      # every production parallel in one pass
 grep -rn "// GOTCHA:" client/src    # every trap
 ```
 
+## Offline reading
+
+All lessons (write-ups + annotated source) are bundled into
+[`react-learnings.pdf`](./react-learnings.pdf) for reading on the go.
+Regenerate it after changing lessons with `bun run pdf` (needs `pandoc` and
+Chrome).
+
 ## 2026 notes
 
 - **React Compiler is stable** (v1.0): memoization is automatic. There is no
